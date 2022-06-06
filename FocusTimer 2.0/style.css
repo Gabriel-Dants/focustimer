@@ -26,6 +26,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
 }
 
 main {
@@ -64,5 +65,52 @@ main {
     gap: 4rem;
 }
 
+.dark_mode {
+    position: absolute;
+    right: 6rem;
+    top: 6rem;
+    width: 4.4rem;
+    height: 4.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
+
+.floresta2 img, .chuva2 img, .cafeteria2 img, .lareira2 img, .floresta_dark02 img, .chuva_dark02 img, .cafeteria_dark02 img, .lareira_dark02 img {
+    position: absolute;
+}
+
+.slider {
+    margin-left: 0.75rem;
+    margin-top: 12.5rem;
+    cursor: pointer;
+    position: sticky;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: white;
+}
+
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.dark {
+    color: white;
+    background-color: black;
+}
