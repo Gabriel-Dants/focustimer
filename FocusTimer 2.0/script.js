@@ -219,6 +219,7 @@ buttonLight.addEventListener('click', function (){
 buttonDark.addEventListener('click', function (){
     buttonDark.classList.add('hide')
     buttonLight.classList.remove('hide')
+    addLightMode()
     buttonPressAudio.play()
 })
 
@@ -266,6 +267,68 @@ function countdown () {
 }
 
 
+// Função do LightTheme
+
+function addLightMode () {
+    backgroundContainer.classList.remove('dark')
+    cardFloresta.classList.remove('hide')
+    cardChuva.classList.remove('hide')
+    cardCafeteria.classList.remove('hide')
+    cardLareira.classList.remove('hide')
+    buttonPlay.classList.remove('hide')
+    buttonCount.classList.remove('hide')
+    buttonPlus.classList.remove('hide')
+    buttonMinus.classList.remove('hide')
+
+
+    cardFlorestaDark.classList.add('hide')
+    cardFlorestaDark2.classList.add('hide')
+    cardChuvaDark.classList.add('hide')
+    cardChuvaDark2.classList.add('hide')
+    cardCafeteriaDark.classList.add('hide')
+    cardCafeteriaDark2.classList.add('hide')
+    cardLareiraDark.classList.add('hide')
+    cardLareiraDark2.classList.add('hide')
+    buttonPlayDark.classList.add('hide')
+    buttonPauseDark.classList.add('hide')
+    buttonCountDark.classList.add('hide')
+    buttonStopDark.classList.add('hide')
+    buttonPlusDark.classList.add('hide')
+    buttonMinusDark.classList.add('hide')
+
+    florestaSound.pause()
+    chuvaSound.pause()
+    cafeteriaSound.pause()
+    lareiraSound.pause()
+    resetTimer()
+}
+
+// Funções do DarkTheme
+
+
+function countdownDark () {
+    pauseCountDown = setTimeout(function () {
+
+        let seconds = Number(secondsDisplay.textContent)
+        let minutes = Number(minutesDisplay.textContent)
+
+        if (minutes <= 0 && seconds <= 0){
+            resetControlsDark()
+            kitchenTimer.play()
+            return
+        }
+
+        if (seconds <= 0) {
+            seconds = 5
+           --minutes
+        }
+
+        updateTimerDisplay(minutes,--seconds)
+        countdownDark()
+    },1000)
+}
+
+
 function AddDarkMode () {
     backgroundContainer.classList.add('dark')
     cardFloresta.classList.add('hide')
@@ -302,6 +365,10 @@ function AddDarkMode () {
     
 
 }
+
+
+
+// Funções de Clique e Cards do Dark Theme
 
 cardFlorestaDark.addEventListener('click', function() {
     cardFlorestaDark.classList.add('hide')
@@ -386,17 +453,29 @@ buttonPlayDark.addEventListener('click', function (){
     buttonCountDark.classList.add('hide')
     buttonStopDark.classList.remove('hide')
     buttonPressAudio.play()
+    countdownDark()
 })
 
 buttonPauseDark.addEventListener('click', function (){
     buttonPlayDark.classList.remove('hide')
     buttonPauseDark.classList.add('hide')
     buttonPressAudio.play()
+    clearTimeout(pauseCountDown)
 })
 
 buttonCountDark.addEventListener('click', function (){
     buttonCountDark.classList.add('hide')
     buttonStopDark.classList.remove('hide')
+
+    newMinutes = prompt("Adicione o tempo ao seu timer")
+
+    if (!newMinutes){
+        resetControlsDark()
+        return
+    }
+
+    minutes = newMinutes
+    updateTimerDisplay(minutes,0)
     buttonPressAudio.play()
 })
 
@@ -405,7 +484,27 @@ buttonStopDark.addEventListener('click', function (){
     buttonCountDark.classList.remove('hide')
     buttonPlayDark.classList.remove('hide')
     buttonPauseDark.classList.add('hide')
+    resetTimer()
+    resetControlsDark()
     buttonPressAudio.play()
 })
 
-// Próxima Tarefa é organizar o código e começar a montar a função de countdown na função dark. Depois de tudo isso aplicar o botão de Light theme
+buttonPlusDark.addEventListener('click', function (){
+    updateTimerDisplay(++minutes,0)
+    buttonPressAudio.play()
+})
+
+buttonMinusDark.addEventListener('click', function (){
+    updateTimerDisplay(--minutes,0)
+    buttonPressAudio.play()
+})
+
+
+function resetControlsDark () {
+    updateTimerDisplay(minutes,0)
+    buttonPlayDark.classList.remove('hide')
+    buttonPauseDark.classList.add('hide')
+    buttonCountDark.classList.remove('hide')
+    buttonStopDark.classList.add('hide')
+}
+
