@@ -203,6 +203,9 @@ buttonPlus.addEventListener('click', function (){
 })
 
 buttonMinus.addEventListener('click', function (){
+    if (seconds == 0 && minutes == 0) {
+        return
+    }
     updateTimerDisplay(--minutes,0)
     buttonPressAudio.play()
 })
@@ -495,6 +498,9 @@ buttonPlusDark.addEventListener('click', function (){
 })
 
 buttonMinusDark.addEventListener('click', function (){
+    if (seconds == 0 && minutes == 0) {
+        return
+    }
     updateTimerDisplay(--minutes,0)
     buttonPressAudio.play()
 })

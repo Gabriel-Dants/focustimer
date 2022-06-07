@@ -1,3 +1,6 @@
+
+/* Formataçõe Gerais */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +10,9 @@
 :root {
     font-size: 62.5%;
 }
+
+/* Formatações de Containers Gerais */
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -35,7 +41,11 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
+
+
+/* Formataçõe de Elementos*/
 
 .timer {
     display: flex;
@@ -44,11 +54,13 @@ main {
 }
 
 .cards {
-    width: 30.8rem;
-    height: 33.6rem;
+    max-width: 30.8rem;
+    max-height: 33.6rem;
     display: grid;
     grid-template-columns: 13.8rem 13.8rem;
     grid-column-gap: 3.2rem;
+    animation-name: opening-cards;
+    animation-duration: 1s;
 }
 
 .numbers {
@@ -63,17 +75,21 @@ main {
     justify-content: center;
     align-items: center;
     gap: 4rem;
+    animation-name: opening-controls;
+    animation-duration: 2s;
 }
 
+/* Formataçõe do Modo Dark e Sliders */
+
 .dark_mode {
-    position: absolute;
+    position:absolute;
     right: 6rem;
     top: 6rem;
-    width: 4.4rem;
-    height: 4.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation-name: opening-cards;
+    animation-duration: 2s;
 }
 
 
@@ -113,4 +129,49 @@ input[type=range]::-webkit-slider-runnable-track  {
 .dark {
     color: white;
     background-color: black;
+}
+
+/* Formataçõe de Animações, Hover e Media Screen */
+
+.cards img:hover , .controls img:hover, .dark_mode img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@keyframes opening-cards {
+    from {
+        opacity: 0.2;
+        margin-bottom: 10rem;
+    }
+
+    to {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+
+@keyframes opening-controls {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 920px){
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8rem;
+    }
+
+    .dark_mode {
+        right: 3rem;
+        top: 3rem;
+    }
 }
