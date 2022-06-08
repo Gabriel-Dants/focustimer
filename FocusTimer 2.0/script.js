@@ -1,3 +1,5 @@
+
+
 // Variáveis de Botões
 let buttonPlay = document.querySelector('.play')
 let buttonPause = document.querySelector('.pause')
@@ -6,7 +8,6 @@ let buttonCount = document.querySelector('.count')
 
 let buttonPlus = document.querySelector('.add5')
 let buttonMinus = document.querySelector('.sub5')
-
 
 //Variáveis de Cartões
 let cardFloresta = document.querySelector('.floresta')
@@ -245,7 +246,6 @@ sliderLareira.addEventListener("input", function(){
 });
 
 
-
 // Função de Timer
 function countdown () {
     pauseCountDown = setTimeout(function () {
@@ -260,7 +260,7 @@ function countdown () {
         }
 
         if (seconds <= 0) {
-            seconds = 5
+            seconds = 60
            --minutes
         }
 
@@ -306,6 +306,7 @@ function addLightMode () {
     resetTimer()
 }
 
+
 // Funções do DarkTheme
 
 
@@ -322,7 +323,7 @@ function countdownDark () {
         }
 
         if (seconds <= 0) {
-            seconds = 5
+            seconds = 60
            --minutes
         }
 
